@@ -5,6 +5,14 @@
 CI:continuous  INTEGRATION  可以持续化集成
 CD:  continuous   delivery  、continuous  deployment 可持续化交互/可持续化发布
 
+
+
+
+
+
+
+
+
 二、安装（官网地址 https://jenkins.io/）
 1、Jenkins有两种版本，一种安装版，一种war包（推荐）。各种版本的安装版的安装方法： https://jenkins.io/zh/doc/book/installing/
 2、三种启动方式：
@@ -14,14 +22,40 @@ CD:  continuous   delivery  、continuous  deployment 可持续化交互/可持�
 ps：
 ①第一次启动，控制台会显示默认密码。
 
+
+
+
+
+
+
+
+
+
 三、环境准备
 在一台主机上准备两个tomcat，需要注意两个tomcat的启动端口和关闭端口不能重复，其中一个tomcat-jenkins运行了jenkins.war，另一个tomcat-app运行项目war包。
+
+
+
+
+
+
+
+
 
 四、jenkins全局配置
 1、本机安装git、jdk（1.8）、maven（>=3.3.9）
 2、在jenkins控制台上安装插件：Maven Integration集成(可以创建maven类型的任务)、Deploy to container动态部署
 
-三、构建一个动态部署应用的任务（必须将项目打成war才能再一个tomcat动态部署项目，jar包不行）
+
+
+
+
+
+
+
+
+
+五、构建一个动态部署应用的任务（必须将项目打成war才能再一个tomcat动态部署项目，jar包不行）
 创建任务并配置
 1、源码管理（从git上拉取项目源代码）
 2、构建触发器 （检查git上是否有代码更新，重新构建项目）
@@ -55,7 +89,16 @@ ps：
 5、这种动态部署自能开发者在自己的开发机上自己使用，毕竟tomcat总是不重启还要动态的部署war包，总是有出错的的时候.JVM总是内存溢出等各种原因，导致项目无法正常部署。
 
 
-四、构建使用shell脚本的方式部署应用的 任务
+
+
+
+
+
+
+
+
+
+六、构建使用shell脚本的方式部署应用的 任务
 相比第三点、不重启tomcat，第四点通过shell脚本重启tomcat，保证应用能够正常部署。
 创建任务并配置
 1、源码管理（从git上拉取项目源代码）
@@ -118,18 +161,36 @@ ps -ef|grep apache-tomcat-app|grep -v "grep"|awk '{print $2}'
 远程部署：安装ssh插件
 
 
-五、DevOps 开发和运维的组合
+
+
+
+
+
+
+
+
+
+
+七、DevOps 开发和运维的组合
 参考图片
 https://develop.aliyun.com/devops
 
-六、集群部署的思路
+
+
+
+
+
+
+
+
+八、集群部署的思路
 ①修改shell脚本
 ②多创建几个任务
 部署项目，变数比较多，项目规模的复杂度不一。更多的通过修改shell脚本的方式来部署应用。
 规模越大越需要配置中心。
 shell脚本能搞定的功能jenkins一定能搞定，因此再完成某个功能之前看看有没有合适的插件
 
-七、jenkins可以集成自动化测试，
+九、jenkins可以集成自动化测试，
 略
 
 
